@@ -10,3 +10,6 @@ dist-ssr
 .cache
 server/dist
 public/dist
+
+# Prisma generated files
+apps/api/src/generated/
