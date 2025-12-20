@@ -1,4 +1,5 @@
-import { MatchStatus, MatchHistoryStatus, ExperienceLevel } from "../../types/enums";
+import { MatchStatus, ExperienceLevel } from "../../types/enums";
+import { $Enums } from "@prisma/client";
 import { User, UserSkill, UserPreference } from "../../types/user.types";
 import { Match, MatchHistory } from "../../types/match.types";
 
@@ -117,11 +118,10 @@ export const createMockMatchHistory = (
     user1Id: "user-alice-001",
     user2Id: "user-bob-002",
     matchedAt,
-    cooldownUntil,
-    status: MatchHistoryStatus.ACCEPTED,
+    cooldownUntil: overrides?.cooldownUntil ?? cooldownUntil,
+    status: $Enums.MatchHistoryStatus.ACCEPTED,
     createdAt: new Date("2024-12-01"),
     ...overrides,
-    cooldownUntil: overrides?.cooldownUntil ?? cooldownUntil,
   };
 };
 
@@ -133,7 +133,7 @@ export const mockMatchHistory = {
     user2Id: "user-bob-002",
     matchedAt: new Date("2024-12-01"),
     cooldownUntil: new Date("2024-12-31"),
-    status: MatchHistoryStatus.ACCEPTED,
+    status: $Enums.MatchHistoryStatus.ACCEPTED,
   }),
   aliceBobExpired: createMockMatchHistory({
     id: "history-002",
@@ -142,7 +142,7 @@ export const mockMatchHistory = {
     user2Id: "user-bob-002",
     matchedAt: new Date("2024-10-01"),
     cooldownUntil: new Date("2024-10-31"),
-    status: MatchHistoryStatus.ACCEPTED,
+    status: $Enums.MatchHistoryStatus.ACCEPTED,
   }),
   charlieDianaActive: createMockMatchHistory({
     id: "history-003",
@@ -151,7 +151,7 @@ export const mockMatchHistory = {
     user2Id: "user-diana-004",
     matchedAt: new Date("2024-11-15"),
     cooldownUntil: new Date("2025-01-14"),
-    status: MatchHistoryStatus.ACCEPTED,
+    status: $Enums.MatchHistoryStatus.ACCEPTED,
   }),
   aliceBobBoundary: createMockMatchHistory({
     id: "history-004",
@@ -160,7 +160,7 @@ export const mockMatchHistory = {
     user2Id: "user-bob-002",
     matchedAt: new Date("2024-12-01T00:00:00Z"),
     cooldownUntil: new Date("2024-12-31T23:59:59Z"),
-    status: MatchHistoryStatus.ACCEPTED,
+    status: $Enums.MatchHistoryStatus.ACCEPTED,
   }),
 };
 

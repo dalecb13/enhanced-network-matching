@@ -3,7 +3,7 @@ import { Test, TestingModule } from "@nestjs/testing";
 import { BadRequestException, NotFoundException } from "@nestjs/common";
 import { MatchingService } from "../../matching/matching.service";
 import { PrismaService } from "../../prisma/prisma.service";
-import { MatchStatus, MatchHistoryStatus } from "../../types/enums";
+import { MatchStatus } from "../../types/enums";
 import {
   mockUsers,
   mockMatchHistory,
@@ -704,7 +704,7 @@ describe("MatchingService", () => {
 
       expect(prisma.matchHistory.create).toHaveBeenCalled();
       const createCall = prisma.matchHistory.create as jest.Mock;
-      const cooldownUntil = createCall.mock.calls[0][0].data.cooldownUntil;
+      const cooldownUntil = (createCall.mock.calls[0][0] as { data: { cooldownUntil: Date } }).data.cooldownUntil;
       const expectedDate = new Date();
       expectedDate.setDate(expectedDate.getDate() + 60); // Max of 60 and 30
 

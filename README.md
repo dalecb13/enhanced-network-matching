@@ -18,7 +18,7 @@ This Turborepo includes the following packages and apps:
 
 ### Apps and Packages
 
-- `api`: an [Express](https://expressjs.com/) server
+- `api`: a [NestJS](https://nestjs.com/) server with Prisma ORM
 - `storefront`: a [Next.js](https://nextjs.org/) app
 - `admin`: a [Vite](https://vitejs.dev/) single page app
 - `blog`: a [Remix](https://remix.run/) blog
@@ -38,3 +38,40 @@ This Turborepo has some additional tools already setup for you:
 - [ESLint](https://eslint.org/) for code linting
 - [Jest](https://jestjs.io) test runner for all things JavaScript
 - [Prettier](https://prettier.io) for code formatting
+
+## Database Setup
+
+The API uses PostgreSQL with Prisma ORM. To set up the database:
+
+1. **Start PostgreSQL with Docker Compose:**
+   ```bash
+   docker-compose up -d
+   ```
+
+2. **Configure the database connection:**
+   Create a `.env` file in `apps/api/` with:
+   ```env
+   DATABASE_URL="postgresql://postgres:postgres@localhost:5432/enhanced_network_matching?schema=public"
+   ```
+
+3. **Generate Prisma Client:**
+   ```bash
+   cd apps/api
+   pnpm prisma:generate
+   ```
+
+4. **Run migrations:**
+   ```bash
+   pnpm prisma:migrate
+   ```
+
+5. **Optional: Open Prisma Studio to view data:**
+   ```bash
+   pnpm prisma:studio
+   ```
+
+The Docker Compose setup includes:
+- PostgreSQL 16 (Alpine)
+- Persistent data volume
+- Health checks
+- Port 5432 exposed to host

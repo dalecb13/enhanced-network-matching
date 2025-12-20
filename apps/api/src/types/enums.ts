@@ -14,6 +14,7 @@ export enum MatchStatus {
 }
 
 export enum MatchHistoryStatus {
+  PENDING = "PENDING",
   ACCEPTED = "ACCEPTED",
   DECLINED = "DECLINED",
   EXPIRED = "EXPIRED",

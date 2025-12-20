@@ -1,4 +1,4 @@
-import { MatchStatus, MatchHistoryStatus } from "./enums";
+import { MatchHistoryStatus, MatchStatus } from "./enums";
 import { User } from "./user.types";
 
 export interface Match {

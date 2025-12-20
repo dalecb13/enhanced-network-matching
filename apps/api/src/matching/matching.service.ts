@@ -1,6 +1,7 @@
 import { Injectable, BadRequestException, NotFoundException } from "@nestjs/common";
 import { PrismaService } from "../prisma/prisma.service";
-import { MatchStatus, MatchHistoryStatus } from "../types/enums";
+import { MatchStatus } from "../types/enums";
+import { $Enums } from "@prisma/client";
 
 @Injectable()
 export class MatchingService {
@@ -175,7 +176,7 @@ export class MatchingService {
       }
     }
 
-    return [...new Set(excluded)]; // Remove duplicates
+    return Array.from(new Set(excluded)); // Remove duplicates
   }
 
   /**
@@ -234,7 +235,7 @@ export class MatchingService {
         user2Id,
         matchedAt: match.matchedAt,
         cooldownUntil,
-        status: MatchHistoryStatus.PENDING,
+        status: $Enums.MatchHistoryStatus.ACCEPTED,
       },
     });
 
