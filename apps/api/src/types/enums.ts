@@ -1,0 +1,22 @@
+export enum ExperienceLevel {
+  BEGINNER = "BEGINNER",
+  INTERMEDIATE = "INTERMEDIATE",
+  ADVANCED = "ADVANCED",
+  EXPERT = "EXPERT",
+}
+
+export enum MatchStatus {
+  PENDING = "PENDING",
+  ACCEPTED = "ACCEPTED",
+  DECLINED = "DECLINED",
+  EXPIRED = "EXPIRED",
+  COMPLETED = "COMPLETED",
+}
+
+export enum MatchHistoryStatus {
+  ACCEPTED = "ACCEPTED",
+  DECLINED = "DECLINED",
+  EXPIRED = "EXPIRED",
+  COMPLETED = "COMPLETED",
+}
+
