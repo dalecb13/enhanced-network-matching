@@ -7,3 +7,4 @@ export interface SystemConfig {
   updatedBy: string | null;
 }
 
+
